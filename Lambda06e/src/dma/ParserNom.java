@@ -5,28 +5,33 @@ public class ParserNom {
     public static void main(String[] atgs0){
     	ParserNom parser = new ParserNom();
 
-    	Personne pers1 = parser.parse("Eric Clapton 1945", new PersonneBuilder() {
-    	    @Override
-    	    public Personne create(String firstName, String lastName, int age) {
-    	        return new Personne(firstName, lastName, age);
-    	    }
-    	});
+//    	Personne pers1 = parser.parse("Eric Clapton 1945", new PersonneBuilder() {
+//    	    @Override
+//    	    public Personne create(String firstName, String lastName, int age) {
+//    	        return new Personne(firstName, lastName, age);
+//    	    }
+//    	});
+    	Personne pers1 = parser.parse("Eric Clapton 1945", (s1, s2, age) -> new Personne(s1, s2, age));
     	System.out.println(pers1);
     	
-       	Personne pers2 = parser.parse("Mark Knopfler 1949", new PersonneBuilder() {
-    	    @Override
-    	    public Personne create(String firstName, String lastName, int age) {
-    	        return new Personne(firstName, lastName, age);
-    	    }
-    	});
+new PersonneFactory();
+		//       	Personne pers2 = parser.parse("Mark Knopfler 1949", new PersonneBuilder() {
+//    	    @Override
+//    	    public Personne create(String firstName, String lastName, int age) {
+//    	        return new Personne(firstName, lastName, age);
+//    	    }
+//    	});
+       	Personne pers2 = parser.parse("Mark Knopfler 1949", (s1, s2, age) -> PersonneFactory.create(s1, s2, age)); 
+       	// syntaxe ainsi car create() est une méthode static, pas de new
     	System.out.println(pers2);
 
-      	Personne pers3 = parser.parse("Robbie Williams 1974", new PersonneBuilder() {
-    	    @Override
-    	    public Personne create(String firstName, String lastName, int age) {
-    	        return new Personne(firstName, lastName, age);
-    	    }
-    	});
+//      	Personne pers3 = parser.parse("Robbie Williams 1974", new PersonneBuilder() {
+//    	    @Override
+//    	    public Personne create(String firstName, String lastName, int age) {
+//    	        return new Personne(firstName, lastName, age);
+//    	    }
+//    	});
+      	Personne pers3 = parser.parse("Robbie Williams 1974", (s1, s2, age) -> new PersonneFactory().build(s1, s2, age));
     	System.out.println(pers3);
     	
     }
