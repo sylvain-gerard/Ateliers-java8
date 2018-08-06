@@ -3,7 +3,7 @@ package dma;
 interface CalculEntier{
 	int operation (int a, int b);
 }
-
+// DONE
 public class Calculette {
 	public int operationSurEntier(int a, int b, CalculEntier calcul){
 		return calcul.operation (a,b);
