@@ -35,14 +35,14 @@ public class LecteurImages extends JFrame {
       JLabel label = new JLabel();
       URL location = new URL(String.format(imagePattern, i));
       
-      taskList.execute(new Runnable(){
-    	  @Override
-    	  public void run(){
-    		  ImageIcon icon = new ImageIcon(location);
-    	      label.setIcon(icon);
-    	  }
-      });
-      
+//      taskList.execute(new Runnable(){
+//    	  @Override
+//    	  public void run(){
+//    		  ImageIcon icon = new ImageIcon(location);
+//    	      label.setIcon(icon);
+//    	  }
+//      });
+      taskList.execute(() -> label.setIcon(new ImageIcon(location)));
       imagePanel.add(label);
       System.out.println(" image " + i + " récupée");
     }
